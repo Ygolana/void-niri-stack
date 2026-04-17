@@ -34,4 +34,3 @@ if [ "$INSTALL_NOCTALIA" = true ]; then
 fi
 
 echo "[✔] Installation complete"
-echo "Run with: exec dbus-run-session niri"

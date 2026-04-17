@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
-set -e
 
+source lib/core.sh
+source lib/packages.sh
+
+LOG "Updating system..."
 sudo xbps-install -Su
 
-sudo xbps-install -y \
-  base-devel git curl wget unzip \
-  dbus seatd elogind polkit-elogind \
-  mesa mesa-dri vulkan-loader \
+LOG "Installing base system..."
+install_packages \
+  git curl base-devel pkg-config \
+  dbus elogind \
   wayland wayland-protocols \
-  wayland-devel wayland-protocols-devel \
-  libxkbcommon-devel pixman-devel \
-  mesa-devel vulkan-loader-devel \
-  foot fuzzel brightnessctl \
-  xdg-user-dirs xdg-desktop-portal \
-  rust cargo cmake ninja pkg-config
+  mesa
 
+LOG "Enabling services..."
 sudo ln -sf /etc/sv/dbus /var/service
-sudo ln -sf /etc/sv/seatd /var/service
+sudo ln -sf /etc/sv/elogind /var/service
 
-sudo usermod -aG _seat "$USER"
+LOG "Base setup complete"
