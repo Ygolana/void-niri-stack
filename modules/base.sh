@@ -10,11 +10,11 @@ sudo xbps-install -Su
 LOG "Installing base system..."
 
 install_packages \
-  git curl base-devel pkg-config \
+  git curl base-devel pkg-config pkgconf \
   dbus elogind \
   wayland wayland-protocols \
   mesa mesa-dri vulkan-loader \
-  glib glib-devel pkgconf \
+  glib glib-devel \
   libseat-devel \
   pipewire-devel \
   cairo-devel \
