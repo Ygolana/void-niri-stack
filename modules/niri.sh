@@ -32,6 +32,7 @@ ensure_dir "$BUILD_DIR"
 clone_or_update_repo "https://github.com/YaLTeR/niri" "$NIRI_DIR"
 
 cd "$NIRI_DIR"
+rm -rf target
 
 if command_exists niri; then
   LOG "Niri already installed"
