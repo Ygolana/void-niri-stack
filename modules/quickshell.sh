@@ -31,6 +31,9 @@ fi
 LOG "Hard cleaning build state..."
 rm -rf build
 
+export CC=clang
+export CXX=clang++
+
 LOG "Configuring..."
 cmake -S . -B build -G Ninja \
   -DCMAKE_BUILD_TYPE=Release
