@@ -14,7 +14,7 @@ install_packages \
   dbus elogind \
   wayland wayland-protocols \
   mesa mesa-dri vulkan-loader \
-  glib-devel \
+  glib glib-devel pkgconf \
   libseat-devel \
   pipewire-devel \
   cairo-devel \
