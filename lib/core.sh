@@ -15,7 +15,7 @@ clone_or_update_repo() {
 
   if [ -d "$dir/.git" ]; then
     LOG "Updating repo: $dir"
-    git -C "$dir" pull --rebase
+    git -C "$dir" pull --rebase --autostash
   else
     LOG "Cloning: $url"
     rm -rf "$dir"
