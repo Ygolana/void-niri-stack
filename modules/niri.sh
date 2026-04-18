@@ -10,11 +10,17 @@ LOG "Installing Niri dependencies..."
 
 install_packages \
   git base-devel pkg-config \
+  glib-devel \
+  pipewire-devel \
+  libseat-devel \
+  cairo-devel \
+  pango-devel \
+  libdisplay-info-devel \
   libxkbcommon-devel \
   libinput-devel \
   pixman-devel \
   libdrm-devel \
-  eudev-libudev-devel \
+  clang llvm \
   rust cargo
 
 ensure_dir "$BUILD_DIR"
