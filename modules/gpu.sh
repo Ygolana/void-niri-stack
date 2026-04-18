@@ -24,14 +24,13 @@ elif echo "$GPU_INFO" | grep -qi "amd\|radeon"; then
   sudo xbps-install -y mesa mesa-vulkan-radeon xf86-video-amdgpu linux-firmware-amd
 
 elif echo "$GPU_INFO" | grep -qi "nvidia"; then
-  LOG "NVIDIA GPU detected (nouveau)"
+  LOG "NVIDIA GPU detected"
   sudo xbps-install -y mesa nouveau vulkan-loader
 
 else
-  LOG "Unknown GPU — installing safe fallback"
+  LOG "Unknown GPU — fallback stack"
   sudo xbps-install -y mesa vulkan-loader
 fi
 
 touch "$MARKER"
-
 LOG "GPU setup complete"
