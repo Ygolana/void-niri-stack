@@ -3,7 +3,7 @@ set -euo pipefail
 
 source lib/core.sh
 
-MARKER="/tmp/.gpu_installed"
+MARKER="$HOME/.cache/void-niri-stack-gpu"
 
 if [ -f "$MARKER" ]; then
   LOG "GPU already configured — skipping"
@@ -17,7 +17,7 @@ echo "$GPU_INFO"
 
 if echo "$GPU_INFO" | grep -qi "intel"; then
   LOG "Intel GPU detected"
-  sudo xbps-install -y mesa intel-video-accel vulkan-loader mesa-vulkan-intel
+  sudo xbps-install -y mesa intel-video-accel vulkan-loader vulkan-intel
 
 elif echo "$GPU_INFO" | grep -qi "amd\|radeon"; then
   LOG "AMD GPU detected"
