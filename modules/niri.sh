@@ -9,9 +9,9 @@ NIRI_DIR="$BUILD_DIR/niri"
 LOG "Installing Niri dependencies..."
 
 install_packages \
-  git base-devel pkg-config \
-  glib-devel \
-  pipewire-devel \
+  git base-devel pkg-config pkgconf \
+  glib glib-devel \
+  pipewire pipewire-devel \
   libseat-devel \
   cairo-devel \
   pango-devel \
@@ -20,6 +20,10 @@ install_packages \
   libinput-devel \
   pixman-devel \
   libdrm-devel \
+  libgbm-devel \
+  mesa-dri \
+  libX11-devel \
+  libXwayland-devel \
   clang llvm \
   rust cargo
 
@@ -33,6 +37,8 @@ if command_exists niri; then
   LOG "Niri already installed"
   exit 0
 fi
+
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
 LOG "Building Niri..."
 cargo build --release
