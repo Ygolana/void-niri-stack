@@ -1,1 +1,2 @@
 spawn-at-startup "foot"
+spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"
