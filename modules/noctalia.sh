@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 source lib/core.sh
 
@@ -28,8 +29,5 @@ mkdir -p "$(dirname "$NIRI_CONFIG")"
 touch "$NIRI_CONFIG"
 
 if ! grep -q "noctalia-shell" "$NIRI_CONFIG"; then
-  cat <<EOF
-
-spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"
-EOF >> "$NIRI_CONFIG"
+  echo 'spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"' >> "$NIRI_CONFIG"
 fi
