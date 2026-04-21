@@ -23,7 +23,7 @@ install_packages \
   libgbm-devel \
   mesa-dri \
   libX11-devel \
-  libXwayland-devel \
+  xorg-server-xwayland \
   clang llvm \
   rust cargo
 
