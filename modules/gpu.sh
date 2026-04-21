@@ -4,6 +4,7 @@ set -euo pipefail
 source lib/core.sh
 
 MARKER="$HOME/.cache/void-niri-stack-gpu"
+mkdir -p "$(dirname "$MARKER")"
 
 if [ -f "$MARKER" ]; then
   LOG "GPU already configured — skipping"
@@ -29,7 +30,7 @@ elif echo "$GPU_INFO" | grep -qi "nvidia"; then
 
 else
   LOG "Unknown GPU — fallback stack"
-  sudo xbps-install -y mesa vulkan-loader
+  sudo xbps-install -y mesa vulkan-loader || true
 fi
 
 touch "$MARKER"
