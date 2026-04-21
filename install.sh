@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-trap 'echo "[ERROR] Failed at line $LINENO"' ERR
+trap 'echo "[ERROR] Failed at line $LINENO: $BASH_COMMAND"' ERR
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 INSTALL_NIRI=false
 INSTALL_NOCTALIA=false
@@ -20,17 +22,18 @@ if [ "$INSTALL_ALL" = true ]; then
 fi
 
 echo "[+] Starting Void setup..."
+echo "[+] Mode: NIRI=$INSTALL_NIRI NOCTALIA=$INSTALL_NOCTALIA"
 
-bash modules/base.sh
-bash modules/gpu.sh
+bash "$SCRIPT_DIR/modules/base.sh"
+bash "$SCRIPT_DIR/modules/gpu.sh"
 
 if [ "$INSTALL_NIRI" = true ]; then
-  bash modules/niri.sh
+  bash "$SCRIPT_DIR/modules/niri.sh"
 fi
 
 if [ "$INSTALL_NOCTALIA" = true ]; then
-  bash modules/quickshell.sh
-  bash modules/noctalia.sh
+  bash "$SCRIPT_DIR/modules/quickshell.sh"
+  bash "$SCRIPT_DIR/modules/noctalia.sh"
 fi
 
 echo "[✔] Installation complete"
