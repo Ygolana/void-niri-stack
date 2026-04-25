@@ -15,8 +15,7 @@ install_packages() {
 
         # Input / sound
         libinput
-        pipewire wireplumber pipewire-pulse
-        alsa-utils
+        pipewire wireplumber alsa-utils  # Removed pipewire-pulse
 
         # Fonts
         noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji
@@ -50,7 +49,7 @@ install_packages() {
     )
 
     LOG "Syncing repository index..."
-    sudo xbps-install -S                     # will exit on error – no || true
+    sudo xbps-install -S
 
     LOG "Installing base packages..."
     sudo xbps-install -y "${pkgs[@]}"
