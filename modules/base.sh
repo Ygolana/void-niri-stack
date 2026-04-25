@@ -1,35 +1,69 @@
 #!/usr/bin/env bash
+# modules/base.sh – Base Void Linux packages and services
 set -euo pipefail
+source "$(dirname "$0")/../lib/core.sh"
 
-source lib/core.sh
-source lib/packages.sh
+install_packages() {
+    local pkgs=(
+        # Graphics / Wayland
+        mesa-dri mesa-vaapi mesa-vdpau
+        vulkan-loader mesa-vulkan-intel
+        libglvnd
+        wayland wayland-devel wayland-protocols
+        xdg-desktop-portal xdg-desktop-portal-wlr
+        seatd
 
-LOG "Updating system..."
-sudo xbps-install -Su
+        # Input / sound
+        libinput
+        pipewire wireplumber pipewire-pulse
+        alsa-utils
 
-LOG "Installing base system..."
+        # Fonts
+        noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji
+        fontconfig
 
-install_packages \
-  git curl base-devel pkg-config pkgconf \
-  dbus elogind \
-  wayland wayland-protocols \
-  mesa mesa-dri vulkan-loader \
-  glib glib-devel \
-  libseat-devel \
-  pipewire-devel \
-  cairo-devel \
-  pango-devel \
-  libdisplay-info-devel \
-  libxkbcommon-devel \
-  libinput-devel \
-  pixman-devel \
-  libdrm-devel \
-  eudev-libudev-devel \
-  clang llvm \
-  rust cargo
+        # Basic tools
+        curl wget git
+        htop neofetch
 
-LOG "Enabling services..."
-sudo ln -sf /etc/sv/dbus /var/service || true
-sudo ln -sf /etc/sv/elogind /var/service || true
+        # Compositor / shell build deps
+        cmake ninja meson clang llvm
+        pkg-config
+        cargo rust
+        rust-std
+        gcc
+        scdoc
+        pango-devel cairo-devel
+        libxkbcommon-devel
+        pixman-devel
+        udev-devel
+        mesa-libgbm-devel
+        libinput-devel
+        seatd-devel
+        xcb-util-wm-devel
+        xcb-util-cursor-devel
 
-LOG "Base setup complete"
+        # Noctalia‑QS build deps (Qt6)
+        qt6-base-devel
+        qt6-declarative-devel
+        qt6-wayland-devel
+    )
+
+    LOG "Installing base packages..."
+    sudo xbps-install -Syu || true
+    sudo xbps-install -y "${pkgs[@]}"
+    LOG "Base packages installed ✔"
+}
+
+enable_services() {
+    LOG "Enabling necessary services..."
+    sudo ln -sf /etc/sv/dbus /var/service
+    sudo ln -sf /etc/sv/seatd /var/service
+    sudo ln -sf /etc/sv/pipewire /var/service
+    sudo ln -sf /etc/sv/wireplumber /var/service
+    sudo ln -sf /etc/sv/alsa /var/service
+    LOG "Services enabled ✔"
+}
+
+install_packages
+enable_services
