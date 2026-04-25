@@ -49,8 +49,10 @@ install_packages() {
         qt6-wayland-devel
     )
 
+    LOG "Syncing repository index..."
+    sudo xbps-install -S                     # will exit on error – no || true
+
     LOG "Installing base packages..."
-    sudo xbps-install -Syu || true
     sudo xbps-install -y "${pkgs[@]}"
     LOG "Base packages installed ✔"
 }
