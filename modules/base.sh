@@ -38,12 +38,18 @@ install_packages() {
         libinput-devel
         xcb-util-wm-devel
         xcb-util-cursor-devel
+        cli11
+        polkit-devel
+        jemalloc-devel
+        pam-devel
+        SPIRV-Tools
 
         # Noctalia‑QS build deps (Qt6)
         qt6-base-devel
         qt6-declarative-devel
         qt6-wayland-devel
         qt6-shadertools-devel
+        qt6-declarative-private-devel
     )
 
     LOG "Syncing repository index..."
