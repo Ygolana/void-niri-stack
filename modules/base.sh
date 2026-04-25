@@ -15,7 +15,7 @@ install_packages() {
 
         # Input / sound
         libinput
-        pipewire wireplumber alsa-utils  # Removed pipewire-pulse
+        pipewire wireplumber alsa-utils
 
         # Fonts
         noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji
@@ -23,7 +23,7 @@ install_packages() {
 
         # Basic tools
         curl wget git
-        htop
+        htop fastfetch
 
         # Compositor / shell build deps
         cmake ninja meson clang llvm
@@ -43,6 +43,7 @@ install_packages() {
         qt6-base-devel
         qt6-declarative-devel
         qt6-wayland-devel
+        qt6-shadertools-devel
     )
 
     LOG "Syncing repository index..."
