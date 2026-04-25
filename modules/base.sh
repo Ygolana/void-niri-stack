@@ -23,7 +23,7 @@ install_packages() {
 
         # Basic tools
         curl wget git
-        htop neofetch
+        htop
 
         # Compositor / shell build deps
         cmake ninja meson clang llvm
@@ -35,10 +35,7 @@ install_packages() {
         pango-devel cairo-devel
         libxkbcommon-devel
         pixman-devel
-        udev-devel
-        mesa-libgbm-devel
         libinput-devel
-        seatd-devel
         xcb-util-wm-devel
         xcb-util-cursor-devel
 
