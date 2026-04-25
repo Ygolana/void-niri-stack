@@ -1,2 +1,3 @@
-spawn-at-startup "foot"
-spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"
+// Existing “binds” and layout sections remain unchanged ...
+// Just fix the spawn line (should be the only one under “spawn-at-startup”):
+spawn-at-startup "qs" "-c" "${HOME}/.local/share/noctalia" "--no-duplicate"
