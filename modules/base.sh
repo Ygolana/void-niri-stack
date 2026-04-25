@@ -6,7 +6,7 @@ source "$(dirname "$0")/../lib/core.sh"
 install_packages() {
     local pkgs=(
         # Graphics / Wayland
-        mesa-dri mesa-vaapi mesa-vdpau
+        mesa
         vulkan-loader mesa-vulkan-intel
         libglvnd
         wayland wayland-devel wayland-protocols
