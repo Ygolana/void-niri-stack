@@ -44,20 +44,22 @@ install_packages() {
         pam-devel
         SPIRV-Tools
 
-        # Noctalia‑QS build deps (Qt6)
+        # Noctalia‑QS build deps (Qt6 dev)
         qt6-base-devel
         qt6-declarative-devel
         qt6-wayland-devel
         qt6-shadertools-devel
         qt6-declarative-private-devel
-        qt6-quick
-        qt6-qml
-        qt6-svg
+
+        # Noctalia / Quickshell runtime deps (Qt6 runtime)
+        qt6-base
+        qt6-declarative
         qt6-wayland
+        qt6-svg
     )
 
     LOG "Syncing repository index..."
-    sudo xbps-install -S
+    sudo xbps-install -S                     # MUST succeed – no || true
 
     LOG "Installing base packages..."
     sudo xbps-install -y "${pkgs[@]}"
