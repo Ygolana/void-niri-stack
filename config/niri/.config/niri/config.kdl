@@ -1,3 +1,7 @@
-// Existing “binds” and layout sections remain unchanged ...
-// Just fix the spawn line (should be the only one under “spawn-at-startup”):
+// Ensure Qt applications (like Quickshell) use the Wayland backend
+environment "QT_QPA_PLATFORM" "wayland"
+
+// Spawn Noctalia when Niri starts
 spawn-at-startup "/usr/local/bin/qs" "-c" "${HOME}/.local/share/noctalia" "--no-duplicate"
+
+// … (the rest of your configuration: binds, layout, etc.)
