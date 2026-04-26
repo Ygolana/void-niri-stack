@@ -34,6 +34,12 @@ fi
 if [ "$INSTALL_NOCTALIA" = true ]; then
   bash "$SCRIPT_DIR/modules/quickshell.sh"
   bash "$SCRIPT_DIR/modules/noctalia.sh"
+  bash "$SCRIPT_DIR/modules/user-env.sh"
 fi
 
 echo "[✔] Installation complete"
+echo "————————————————————————————————————————"
+echo "IMPORTANT: You must reboot now."
+echo "After reboot, log in on a TTY (Ctrl+Alt+F2) and run: niri"
+echo "Noctalia will start automatically."
+echo "————————————————————————————————————————"
