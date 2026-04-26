@@ -50,6 +50,10 @@ install_packages() {
         qt6-wayland-devel
         qt6-shadertools-devel
         qt6-declarative-private-devel
+        qt6-quick
+        qt6-qml
+        qt6-svg
+        qt6-wayland
     )
 
     LOG "Syncing repository index..."
