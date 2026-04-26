@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# modules/quickshell.sh – Build and install Noctalia‑QS (the Quickshell fork required by Noctalia)
+# modules/quickshell.sh – Build and install Noctalia‑QS (required by Noctalia)
 set -euo pipefail
 source "$(dirname "$0")/../lib/core.sh"
 
